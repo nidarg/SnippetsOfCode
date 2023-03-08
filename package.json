@@ -4,12 +4,19 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "node app.js",
+    "build-client": "cd client && npm run build",
+    "install-client": "cd client && npm install",
+    "postbuild": "npm run install-client && npm run build-client",
+    "app": "nodemon app --ignore client",
+    "client": "npm start --prefix client",
+    "dev": "concurrently --kill-others-on-fail \"npm run app\" \"npm run client\""
   },
   "author": "GG",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "concurrently": "^7.6.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
@@ -21,6 +28,7 @@
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^6.9.2",
     "rate-limiter": "^0.2.0",
+    "react-copy-to-clipboard": "^5.1.0",
     "swagger-ui-express": "^4.6.1",
     "xss-clean": "^0.1.1",
     "yamljs": "^0.3.0"

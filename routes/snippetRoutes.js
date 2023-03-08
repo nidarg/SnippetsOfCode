@@ -1,5 +1,6 @@
 
 const {getAllSnippets,getSnippet,createSnippet,updateSnippet,deleteSnippet} = require('../controllers/snippetController')
+const authenticationMiddleware= require('../middleware/authentication')
 
 const express = require('express')
 const router = express.Router()

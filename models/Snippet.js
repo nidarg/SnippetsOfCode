@@ -9,7 +9,7 @@ const SnippetSchema = new mongoose.Schema({
     },
     title:{
         type:String,
-        required:[true,'Please provide Title']
+        required:[true,'Please provide title']
     },
     description:{
         type:String

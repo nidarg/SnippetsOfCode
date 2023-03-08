@@ -3,10 +3,10 @@ const {StatusCodes} = require('http-status-codes')
 const {BadRequestError,NotFoundError} = require('../errors')
 
 const getAllSnippets = async(req,res)=>{
-    const{title,sort} = req.query
+    const{search,sort} = req.query
     const queryObject = {createdBy:req.user._id}
-    if(title){
-        queryObject.title={$regex:title,$options:'i'}
+    if(search){
+        queryObject.title={$regex:search,$options:'i'}
     }
 
     let result = Snippet.find(queryObject)
@@ -44,6 +44,7 @@ const createSnippet = async(req,res)=>{
    req.body.createdBy = req.user._id
    const snippet = await Snippet.create(req.body)
    res.status(StatusCodes.CREATED).json(snippet)
+   console.log(snippet);
 }
 
 const updateSnippet = async(req,res)=>{

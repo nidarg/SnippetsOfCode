@@ -32,7 +32,14 @@ const login = async(req,res)=>{
     res.status(StatusCodes.OK).json({user:{name:user.name},token})
 }
 
+const getCurrentUser = async (req, res) => {
+    const user = await User.findOne({ _id: req.user._id});
+    const token = user.createJWT()
+    res.status(StatusCodes.OK).json({ user,token});
+  };
+
 module.exports = {
     register,
-    login
+    login,
+    getCurrentUser
 }
