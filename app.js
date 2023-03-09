@@ -36,10 +36,10 @@ app.use(xss())
 app.use('/api/v1/auth',authRoutes)
 app.use('/api/v1/snippets', authenticationMiddleware, snippetRoutes)
 
-app.use(express.static(path.resolve(__dirname, './client/build')))
+app.use(express.static(path.join(__dirname, './client/build')))
 
 app.get('*', function (request, response) {
-  response.sendFile(path.resolve(__dirname, './client/build', 'index.html'))
+  response.sendFile(path.resolve(__dirname, 'client','build', 'index.html'))
 })
 
 app.use(notFoundRouteMiddleware)
