@@ -32,7 +32,6 @@ app.use(helmet())
 app.use(cors())
 app.use(xss())
 
-
 app.use('/api/v1/auth',authRoutes)
 app.use('/api/v1/snippets', authenticationMiddleware, snippetRoutes)
 
